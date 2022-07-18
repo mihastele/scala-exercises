@@ -1,4 +1,4 @@
-package playground
+package playgroundOO
 
 object GenericMyListExt extends App{
 

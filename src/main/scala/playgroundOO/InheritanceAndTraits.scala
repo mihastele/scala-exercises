@@ -1,4 +1,4 @@
-package playground
+package playgroundOO
 
 object InheritanceAndTraits extends App {
 

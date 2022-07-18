@@ -1,4 +1,4 @@
-package playground
+package playgroundOO
 
 
 object MyListWithCaseClasses extends App{

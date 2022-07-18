@@ -1,4 +1,4 @@
-package playground
+package playgroundOO
 
 object Generics extends App{
   class MyList[+A] {

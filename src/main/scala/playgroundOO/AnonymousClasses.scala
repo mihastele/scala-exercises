@@ -1,4 +1,4 @@
-package playground
+package playgroundOO
 
 object AnonymousClasses extends App {
 
