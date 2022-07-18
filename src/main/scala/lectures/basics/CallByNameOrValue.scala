@@ -1,6 +1,6 @@
 package lectures.basics
 
-object CallByNameOrValue extends App{
+object CallByNameOrValue extends App {
 
   def callByValue(x: Long): Unit = {
     println("by Value " + x)
@@ -23,7 +23,6 @@ object CallByNameOrValue extends App{
   def printFirst(x: Int, y: => Int) = println(x)
 
   printFirst(34, infinite()) // This function survives vecuasse y is never called
-
 
 
 }

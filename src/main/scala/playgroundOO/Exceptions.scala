@@ -1,6 +1,6 @@
 package playgroundOO
 
-object Exceptions extends App{
+object Exceptions extends App {
 
   // throws exception
   // val x: String = null
@@ -22,7 +22,7 @@ object Exceptions extends App{
   try {
     // code that might throw
     getInt(true)
-  } catch  {
+  } catch {
     case e: RuntimeException => println("caught a Runtime exception")
   } finally {
     // optional, get's executed no matter what
@@ -37,7 +37,7 @@ object Exceptions extends App{
   try {
     // code that might throw
     getInt2(true)
-  } catch  {
+  } catch {
     case e: NullPointerException => println("caught a Runtime exception") // if no default exception, then then we don't catch the exception (finally still executes though)
     case e: Exception => println("Exception caught")
   } finally {
@@ -47,7 +47,7 @@ object Exceptions extends App{
   val potentialFail = try {
     // code that might throw
     getInt2(false)
-  } catch  {
+  } catch {
     case e: NullPointerException => println("caught a Runtime exception") // if no default exception, then then we don't catch the exception (finally still executes though)
   } finally {
     println("Cleaning up whenever there's an Exception or not")
@@ -56,6 +56,7 @@ object Exceptions extends App{
   // 3. define your own exception
 
   class MyException extends Exception
+
   val exception = new MyException
 
   // throw exception
@@ -69,9 +70,10 @@ object Exceptions extends App{
 
 
   class OverflowException extends RuntimeException
-  class UnderflowException extends RuntimeException
-  class MathCalcException extends RuntimeException
 
+  class UnderflowException extends RuntimeException
+
+  class MathCalcException extends RuntimeException
 
 
   object PocketCalc {
@@ -81,12 +83,14 @@ object Exceptions extends App{
       else if (x < 0 && y < 0 && result > 0) throw new UnderflowException
       else result
     }
+
     def subtract(x: Int, y: Int) = {
       val result = x - y
       if (x > 0 && y < 0 && result < 0) throw new OverflowException
       else if (x < 0 && y > 0 && result > 0) throw new UnderflowException
       else result
     }
+
     def multiply(x: Int, y: Int) = {
       val result = x * y
       if (x > 0 && y > 0 && result < 0) throw new OverflowException
@@ -95,8 +99,9 @@ object Exceptions extends App{
       else if (x < 0 && y > 0 && result > 0) throw new UnderflowException
       else result
     }
+
     def divide(x: Int, y: Int) = {
-      if (y == 0 ) throw new MathCalcException
+      if (y == 0) throw new MathCalcException
       else x / y
     }
   }

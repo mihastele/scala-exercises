@@ -6,7 +6,9 @@ object Inheritance extends App {
   class Animal {
     val creatureType: String = "wild"
     val val123: String = "hund"
+
     def eat = println("nomnom")
+
     protected final def gg = "mmr++" //final prevents classes from overriding it
   }
 
@@ -17,7 +19,7 @@ object Inheritance extends App {
     }
 
     // operator overloading
-    def + (c: Cat) = {
+    def +(c: Cat) = {
       println("gg")
     }
 
@@ -33,11 +35,13 @@ object Inheritance extends App {
   class Person(name: String, age: Int) {
     def this(name: String) = this(name, 0)
   }
+
   class Adult(name: String, age: Int, idCard: String) extends Person(name)
 
   //Overriding
   class Dog(override val val123: String) extends Animal {
     override val creatureType = "domestic"
+
     override def eat = {
       super.eat
       println("chrunch chrunch")
@@ -59,7 +63,8 @@ object Inheritance extends App {
 
   // seal - sealed notation only allows file to extend in the same file
   sealed class Turtle extends Animal
+
   class Cveka extends Turtle
 
-  
+
 }

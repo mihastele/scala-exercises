@@ -1,6 +1,6 @@
 package playgroundOO
 
-object GenericMyListMapFilter extends App{
+object GenericMyListMapFilter extends App {
 
 
   trait MyPredicate[-A] {
@@ -22,36 +22,44 @@ object GenericMyListMapFilter extends App{
     * */
 
     def head: A
+
     def tail: MyList[A]
+
     def isEmpty: Boolean
+
     def add[B >: A](element: B): MyList[B]
 
     def map[B](transformer: MyTransformer[A, B]): MyList[B]
+
     def filter(predicate: MyPredicate[A]): MyList[A]
 
     def ++[B >: A](list: MyList[B]): MyList[B]
+
     def flatMap[B](myTransformer: MyTransformer[A, MyList[B]]): MyList[B]
 
 
-
-
     def printElements: String
+
     override def toString: String = "[" + printElements + "]"
 
   }
 
   object Empty extends MyList[Nothing] {
     def head: Nothing = throw new NoSuchElementException
+
     def tail: MyList[Nothing] = throw new NoSuchElementException
+
     def isEmpty: Boolean = true
+
     def add[B >: Nothing](element: B): MyList[B] = new Cons(element, Empty)
 
     def map[B](transformer: MyTransformer[Nothing, B]): MyList[B] = Empty
+
     def filter(predicate: MyPredicate[Nothing]): MyList[Nothing] = Empty
 
     def ++[B >: Nothing](list: MyList[B]): MyList[B] = list
-    def flatMap[B](myTransformer: MyTransformer[Nothing, MyList[B]]): MyList[B] = Empty
 
+    def flatMap[B](myTransformer: MyTransformer[Nothing, MyList[B]]): MyList[B] = Empty
 
 
     override def printElements: String = ""
@@ -60,8 +68,11 @@ object GenericMyListMapFilter extends App{
   // compose 2 elements
   class Cons[+A](h: A, t: MyList[A]) extends MyList[A] {
     def head: A = h
+
     def tail: MyList[A] = t
+
     def isEmpty: Boolean = false
+
     def add[B >: A](element: B): MyList[B] = new Cons(element, this)
 
     def map[B](transformer: MyTransformer[A, B]): MyList[B] =
@@ -69,7 +80,7 @@ object GenericMyListMapFilter extends App{
 
 
     def filter(predicate: MyPredicate[A]): MyList[A] =
-      if (predicate.test(h)) new Cons (h, t.filter(predicate))
+      if (predicate.test(h)) new Cons(h, t.filter(predicate))
       else t.filter(predicate)
 
 
@@ -79,15 +90,15 @@ object GenericMyListMapFilter extends App{
       myTransformer.transform(h) ++ t.flatMap(myTransformer)
 
     override def printElements: String =
-      if(t.isEmpty) "" + h
+      if (t.isEmpty) "" + h
       else h.toString() + " " + t.printElements
   }
 
 
-  val list123 = new Cons(1, new Cons(4, new Cons( 122, new Cons (3, Empty))))
+  val list123 = new Cons(1, new Cons(4, new Cons(122, new Cons(3, Empty))))
 
-  println(list123.flatMap( new MyTransformer[Int, MyList[Int]] {
-    override def transform(elem: Int):  MyList[Int] = new Cons(elem, new Cons (elem + 1, Empty))
+  println(list123.flatMap(new MyTransformer[Int, MyList[Int]] {
+    override def transform(elem: Int): MyList[Int] = new Cons(elem, new Cons(elem + 1, Empty))
   }).printElements)
 
 }

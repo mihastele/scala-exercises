@@ -23,7 +23,7 @@ object Enums {
     case NONE extends PermissionsWithBits(0) // 000
   }
 
-  object PermissionsWithBits{
+  object PermissionsWithBits {
     def fromBits(bits: Int): PermissionsWithBits = // whatever
       PermissionsWithBits.NONE
   }

@@ -3,13 +3,15 @@ package playgroundOO
 object AbstractDataTypes extends App {
 
   // abstract
-  abstract class Animal{
-    val creatureType : String = "wild" // abstract can have non abstract members
+  abstract class Animal {
+    val creatureType: String = "wild" // abstract can have non abstract members
+
     def eat: Unit
   }
 
   class Dog extends Animal {
     override val creatureType = "doggoa"
+
     override def eat: Unit = println("Chrunch chrunch")
   }
 
@@ -22,7 +24,9 @@ object AbstractDataTypes extends App {
 
   class Crocodile extends Animal with Carnivore with ColdBlooded {
     override val creatureType: String = "croc"
-    override def eat: Unit= println("Nomnom")
+
+    override def eat: Unit = println("Nomnom")
+
     def eat(animal: Animal): Unit = println(s"I'm a croc and I am eating ${animal.creatureType}")
   }
 

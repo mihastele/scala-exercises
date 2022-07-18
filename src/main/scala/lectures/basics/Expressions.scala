@@ -7,13 +7,13 @@ object Expressions extends App {
   // Expressions - return value or a Type (computes as value)
 
   val condition = true
-  val truecond = if(condition) 5 else 3 // IF Expression, because it evaluates, if instruction is in python and java because it doesn't return a value
+  val truecond = if (condition) 5 else 3 // IF Expression, because it evaluates, if instruction is in python and java because it doesn't return a value
 
 
   var i = 0
   while (i < 10) {
     println(i)
-    i+=1
+    i += 1
   }
 
   // FROM NOW ON NEVER USE WHILE AND FOR LOOPS AGAIN, BECAUSE THEY ARE IMPERATIVE
@@ -26,14 +26,12 @@ object Expressions extends App {
   print(avariable) // prints the assigned value
 
 
-
   // Code blocks
   val aCodeBlock = {
     val x = 2
     val y = x + 1
-    if(y > 2) "Hello" else "Goodbye" // this is the value of the CodeBlock because it is the last line
+    if (y > 2) "Hello" else "Goodbye" // this is the value of the CodeBlock because it is the last line
   }
-
 
 
 }
