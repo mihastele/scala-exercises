@@ -47,6 +47,7 @@ object WhatsAFucntion extends App {
 
 
   // Higher order functions either receive function as parameter or return a function as a result
+  // curried function
   val hof: (Int => (Int => Int)) = new Function1[Int, Function1[Int, Int]] {
     override def apply(v1: Int): Function1[Int, Int] = new Function[Int, Int] {
       // closure -> v1 is available in the inner function
@@ -57,6 +58,8 @@ object WhatsAFucntion extends App {
   val adder3 = hof(4)
 
   println(adder3(17))
+
+  println(hof(4)(17)) // currying -> currying means it can be called with multiple parameter list
 
   // This was the only way back then, by instantiating the class. Remember the OO sectionm where we were simulation functions as object
   class Action1 {
