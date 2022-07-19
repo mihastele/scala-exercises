@@ -33,15 +33,15 @@ object HofAndCurries extends App {
   // increment10 = nTimesBetter(plusOne, 10) => x=> plusOne(plusOne...(x))
   //val y = increment10(1)
   def nTimesBetter(f: Int => Int, n: Int): (Int => Int) =
-    if(n <= 0) (x: Int) => x
-    else (x: Int) => nTimesBetter(f, n-1)(f(x))
+    if (n <= 0) (x: Int) => x
+    else (x: Int) => nTimesBetter(f, n - 1)(f(x))
 
-  val plus10= nTimesBetter((x) => x+1, 10)
+  val plus10 = nTimesBetter((x) => x + 1, 10)
   println(plus10(1))
 
   // curried functions
 
-  val superAdder: Int => Int => Int = (x:Int) => (y: Int) => x + y
+  val superAdder: Int => Int => Int = (x: Int) => (y: Int) => x + y
   println(superAdder(3)(7))
 
   val add3 = superAdder(3) // y => 3 + y
@@ -54,5 +54,26 @@ object HofAndCurries extends App {
 
   println(standardFormat(Math.PI))
   println(preciseFormat(Math.PI))
+
+
+  def toCurry(f: (Int, Int) => Int): (Int => Int => Int) =
+    x => y => f(x, y)
+
+  def fromCurry(f: Int => Int => Int): (Int, Int) => Int =
+    (x, y) => f(x)(y)
+
+  // FunctionX
+  def compose(f: Int => Int, g: Int => Int): Int => Int =
+    x => f(g(x))
+
+  def andThen(f: Int => Int, g: Int => Int): Int => Int =
+    x => g(f(x))
+
+  def composeGeneric[A, B, T](f: A => B, g: T => A): T => B =
+    x => f(g(x))
+
+  def andThenGeneric[A, B, T](f: B => T, g: T => A): B => A =
+    x => g(f(x))
+
 
 }
