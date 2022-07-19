@@ -63,7 +63,6 @@ object MapFlatMapFilterFor extends App {
   2. A small collection of at most 1 elemebt - Maybe[+T]
         - map, flatMap, filter
   */
-  
-  
-  
+
+
 }
