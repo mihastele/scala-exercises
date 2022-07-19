@@ -75,5 +75,21 @@ object HofAndCurries extends App {
   def andThenGeneric[A, B, T](f: B => T, g: T => A): B => A =
     x => g(f(x))
 
+  def superAdder2: (Int => Int => Int) = toCurry(_ + _)
 
+  def add4 = superAdder2(4)
+
+  println(add4(17))
+
+  val simpleAdder = fromCurry(superAdder2)
+  println(simpleAdder(4, 7))
+
+  val add2 = (x: Int) => x + 2
+  val times3 = (x: Int) => x * 3
+
+  val composed = compose(add2, times3)
+  val ordered = andThen(add2, times3)
+
+  println(composed(4))
+  println(ordered(4))
 }

@@ -68,7 +68,7 @@ object MyListWithHOF extends App {
     def sort(compare: (Nothing, Nothing) => Int) = Empty
 
     def zipWith[B, C](list: MyList[B], zip: (Nothing, B) => C): MyList[C] =
-      if(!list.isEmpty) throw new RuntimeException(("Lists do not have the same length"))
+      if (!list.isEmpty) throw new RuntimeException(("Lists do not have the same length"))
       else Empty
 
     // reduce
@@ -113,12 +113,13 @@ object MyListWithHOF extends App {
         if (sortedList.isEmpty) Cons(x, Empty)
         else if (compare(x, sortedList.head) <= 0) Cons(x, sortedList)
         else Cons(sortedList.head, insert(x, sortedList.tail))
+
       val sortedTail = t.sort(compare)
       insert(h, sortedTail)
     }
 
     def zipWith[B, C](list: MyList[B], zip: (A, B) => C): MyList[C] =
-      if(list.isEmpty) throw new RuntimeException("Lists do not have the same length")
+      if (list.isEmpty) throw new RuntimeException("Lists do not have the same length")
       else Cons(zip(h, list.head), t.zipWith(list.tail, zip))
 
     // my impl.
