@@ -171,4 +171,13 @@ object MyListWithHOF extends App {
   println(list1235.fold(0)((a, b) => a + b))
 
   println(list1235.fold(0)(_ + _))
+
+  val comprehensionList = for {
+    n <- list1235
+    n1 <- clone123
+  } yield n + "-" + n1.toString
+
+  println(list1235)
+  println(clone123)
+  println(comprehensionList)
 }
