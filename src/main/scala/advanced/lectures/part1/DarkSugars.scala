@@ -1,6 +1,7 @@
 package main.scala.advanced.lectures.part1
 
 import java.awt.Composite
+import scala.util.Try
 
 object DarkSugars extends App {
   // syntax sugar #1: Methods with single param
@@ -43,7 +44,7 @@ object DarkSugars extends App {
   abstract class AnAbstractType {
     def implemented: Int = 23
 
-    def f(a: Int): Int // the only unimplemented, so we can use lambda
+    def f(a: Int): Unit // the only unimplemented, so we can use lambda
   }
 
   val anAbstractInstance: AnAbstractType = (a: Int) => println("Sweet")
